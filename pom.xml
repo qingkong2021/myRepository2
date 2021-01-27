@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+<!--当前项目坐标信息-->
+  <groupId>com.qfedu</groupId>
+  <artifactId>day51_04</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+<!--  指定打包方式-->
+  <packaging>war</packaging>
+
+  <name>day51_04 Maven Webapp</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+<!-- 属性变量定义 把复用的版本号定义成变量-->
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+      <junit.version>4.11</junit.version>
+      <servlet.version>4.0.1</servlet.version>
+      <lombok.version>1.18.16</lombok.version>
+      <c3p0.version>0.9.5.4</c3p0.version>
+      <dbutils.version>1.7</dbutils.version>
+      <jackson.version>2.9.9</jackson.version>
+      <jquery.version>3.5.0</jquery.version>
+      <jsp.version>2.3.3</jsp.version>
+      <maven.version>2.2</maven.version>
+      <jstl.version>1.2</jstl.version>
+      <standard.version>1.1.2</standard.version>
+      <mysql.version>5.1.48</mysql.version>
+  </properties>
+<!--项目的构建管理也叫依赖管理-->
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- 集成服务器编译环境-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>${servlet.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <!--需要lombok-->
+      <dependency>
+          <groupId>org.projectlombok</groupId>
+          <artifactId>lombok</artifactId>
+          <version>${lombok.version}</version>
+          <scope>provided</scope>
+      </dependency>
+    <!--需要c3p0-->
+      <dependency>
+          <groupId>com.mchange</groupId>
+          <artifactId>c3p0</artifactId>
+          <version>${c3p0.version}</version>
+      </dependency>
+      <!-- 需要commons-dbutils -->
+      <dependency>
+          <groupId>commons-dbutils</groupId>
+          <artifactId>commons-dbutils</artifactId>
+          <version>${dbutils.version}</version>
+      </dependency>
+
+      <!--mysql-->
+      <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <version>${mysql.version}</version>
+      </dependency>
+
+        <!-- jackson-databind -->
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-databind</artifactId>
+          <version>${jackson.version}</version>
+      </dependency>
+
+        <!--jackson-annotation-->
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-annotations</artifactId>
+          <version>${jackson.version}</version>
+      </dependency>
+
+      <!-- jackson-core -->
+      <dependency>
+          <groupId>com.fasterxml.jackson.core</groupId>
+          <artifactId>jackson-core</artifactId>
+          <version>${jackson.version}</version>
+      </dependency>
+
+      <!-- query -->
+      <dependency>
+          <groupId>org.webjars.bower</groupId>
+          <artifactId>jquery</artifactId>
+          <version>${jquery.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>jstl</groupId>
+          <artifactId>jstl</artifactId>
+          <version>${jstl.version}</version>
+      </dependency>
+
+      <dependency>
+          <groupId>taglibs</groupId>
+          <artifactId>standard</artifactId>
+          <version>${standard.version}</version>
+      </dependency>
+
+      <!--    可以使用自己的构件-->
+<!--    <dependency>-->
+<!--      <groupId>com.qfedu</groupId>-->
+<!--      <artifactId>day51_04</artifactId>-->
+<!--      <version>1.0.0-SNAPSHOT</version>-->
+<!--    </dependency>-->
+    <!--jsp-->
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>javax.servlet.jsp-api</artifactId>
+      <version>${jsp.version}</version>
+      <scope>provided</scope>
+    </dependency>
+<!--引入mybatis依赖-->
+      <dependency>
+          <groupId>org.mybatis</groupId>
+          <artifactId>mybatis</artifactId>
+          <version>3.5.6</version>
+      </dependency>
+
+  </dependencies>
+<!--插件管理-->
+  <build>
+    <finalName>day51_04</finalName>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+      <plugins>
+<!--tomcat插件配置-->
+        <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>${maven.version}</version>
+<!--          <configuration>-->
+<!--            <port>8181</port>-->
+<!--            <path>/day51</path>-->
+<!--          </configuration>-->
+        </plugin>
+<!--jdk插件配置 明确一下是1.8的jdk-->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.1</version>
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.1.0</version>
+        </plugin>
+        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+        <plugin>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.22.1</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.2.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>2.5.2</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.8.2</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+</project>
